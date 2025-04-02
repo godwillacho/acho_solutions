@@ -3,10 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Insert New Product</title>
+    <style>
+        .container {
+            display: none; /* Initially hide the form */
+        }
+    </style>
+    <script>
+        function toggleForm() {
+            const container = document.querySelector('.container');
+            container.style.display = container.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
-    
+    <h1>
+        <div class="logo">           
+            <a href="index.html">
+                <img src="" alt="acho_solutions logo">
+            </a>
+        </div>
+    </h1>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="manage_product.html">Manage product</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="order.html">order</a></li>
+        </ul>
+    </div>
+    <button onclick="toggleForm()">Add New Product</button>
+    <div class="container">
+        <h2>Insert New Product</h2>
+        <form action="/insert_product" method="POST" enctype="multipart/form-data">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required autocomplete="off">
+
+            <label for="unit">Unit of Measurement:</label>
+            <select id="unit" name="unit" required>
+                {% for unit in units %}
+                    <option value="{{ unit.id }}">{{ unit.name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <button type="submit">Insert Product</button>
+        </form>
+    </div>
+    <h1>Manage Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Unit</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example rows, replace with dynamic data -->
+            <tr>
+                <td data-editable data-field="name">Product 1</td>
+                <td data-editable data-field="unit">Unit 1</td>
+                <td data-editable data-field="price">$100</td>
+                <td data-editable data-field="quantity">10</td>
+                <td data-editable data-field="image">image1.jpg</td>
+                <td class="actions"><button onclick="enableEditing(this.closest('tr'))">Edit</button></td>
+            </tr>
+            <tr>
+                <td data-editable data-field="name">Product 2</td>
+                <td data-editable data-field="unit">Unit 2</td>
+                <td data-editable data-field="price">$200</td>
+                <td data-editable data-field="quantity">20</td>
+                <td data-editable data-field="image">image2.jpg</td>
+                <td class="actions"><button onclick="enableEditing(this.closest('tr'))">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -3,25 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> home </title>
+    <title>Home</title>
 </head>
 <body>
-   <h1>Menu:</h1>
-    <nav>
-        <ul>
-            <li><a href="manage-product.html">Manage Product</a></li>
-            <li><a href="order.html">Order</a></li>
-            <li><a href="index.html">Home</a></li>
-        </ul>
-    </nav>
-    <h1><table>
+    <header >
+        <div class="header-left">
+            <h1><div class="logo">           
+                <a href="index.html">
+                    <img src="" alt="acho_solutions logo">
+                </a>
+            </div>
+            </h1>
+            <h2 class ="search"><form action="/search" method = "GET">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form></h2>
+        </div>
+            <nav>
+                <a href="#" class="menu-open hide-desktop">
+                    <img src="" alt="hamburger menu">
+                    <ul>
+                        <li><a href="" class="menu-close">
+                            <img src="" alt="close button">
+                        </a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="manage_product.html">Manage product</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="order.html">order</a></li>
+                    </ul>
+                </a>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="manage-product.html">Manage product</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="order.html">order</a></li>
+                    </ul>
+                </div>
+            </nav>
+    </header>
+    <table>
         <tr>
-            <th>Name</th>
-            <th>cost_Price</th>
-            <th>selling_Price</th>
+            <th>Product ID</th>
+            <th>picture</th>
+            <th>Product Name</th>
+            <th>Price</th>
             <th>Quantity</th>
-            <th>unit</th>
+            <th>unit</th>   
         </tr>
-    </table></h1>
+        <tr>
+            <td>{{ product.id }}</td>
+            <td><img src="{{ product.image }}" alt="Product Image" width="50" height="50"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ price }}</td>
+            <td>{{ product.quantity }}
+            <td>{{ product.unit }}</td>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
